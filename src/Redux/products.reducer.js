@@ -3,6 +3,7 @@ import * as Types from "./products.actionTypes";
 const iState = {
     productsData: [],
     productsDataCopy: [],
+    cart:[],
     productsLoading: false,
     productsError: false,
     totalCount: 0,
@@ -14,9 +15,17 @@ const iState = {
     const {type,payload} = action;
     switch(type){
         case Types.GET_PRODUCTS_LOADING:
-            return {...oldstate, productsLoading: true}
+            return {...oldstate, productsLoading: true, productsError:false}
+
         case Types.GET_PRODUCTS_SUCCESS:
-            return {...oldstate, productsData: payload, productsDataCopy: payload, totalCount: cartCountFunc(payload),productsLoading: false, totalPrice:avgfun(payload) }
+            return {...oldstate, 
+                productsData: payload, 
+                productsDataCopy: payload,
+                productsError:false, 
+                totalCount: cartCountFunc(payload),
+                productsLoading: false, 
+                totalPrice:avgfun(payload) 
+            }
 
         case Types.GET_PRODUCTS_ERROR:
             return {...oldstate, productsError: true}
@@ -59,6 +68,23 @@ const iState = {
                 productsData: oldstate.productsDataCopy,
             };
 
+
+        case Types.GET_CART_DETAILS_REQUEST:
+            return {
+                ...oldstate, 
+
+            }
+        case Types.GET_CART_DETAILS_SUCCESS:
+            return {
+                ...oldstate, 
+                cart: payload
+            }
+        case Types.GET_CART_DETAILS_FAILUER:
+            return {
+                ...oldstate, 
+
+            }
+
         default:
             return oldstate;
         }
@@ -70,20 +96,20 @@ const iState = {
     const validate = arr.filter((el) => {
         return el.category === "men";
       });
-      return validate.length;
+      return validate;
   }
 
   const filterFuncWomen = (arr)=>{
     const validate = arr.filter((el) => {
         return el.category === "women";
       });
-      return validate.length;
+      return validate;
   }
   const filterFuncKids = (arr)=>{
     const validate = arr.filter((el) => {
         return el.category === "kids";
       });
-      return validate.length;
+      return validate;
   }
 
 
@@ -101,7 +127,7 @@ const iState = {
 
 
   const sortHLfun = (arr) => {
-    return arr.sort((a, b) => Number(b.price) - Number(a.age));
+    return arr.sort((a, b) => Number(b.price) - Number(a.price));
   };
   const sortLHfun = (arr) => {
     return arr.sort((a, b) => Number(a.price) - Number(b.price));

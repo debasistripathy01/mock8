@@ -1,11 +1,12 @@
 import { Grid, HStack } from "@chakra-ui/react";
 import React from "react";
-// import axios from "axios"
+
 import { useEffect } from "react";
 import * as Types from "../Redux/products.actionTypes"
-// import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Components/Loader";
+
 import Navbar from "../Components/Navbar";
 import { getProductData } from "../Redux/products.action";
 import GenderFilter from "../Filters/GenderFilter"
@@ -15,14 +16,15 @@ import IndiProduct from "./IndiProduct"
 
 const Product = () => {
 
-    const {productsData, productsLoading} = useSelector((store)=>store.proReducer)
+    const{ productsData, productsLoading }= useSelector((store)=>store?.proReducer)
     const dispatch = useDispatch();
-    // const [name, setName] = useState("");
+
+
 
     useEffect(() => {
         dispatch(getProductData());
-      }, []);
-      console.log(productsData)
+      }, [dispatch]);
+      // console.log(productsData)
 
       const handleHL = () => {
         dispatch({ type: Types.GET_PRODUCTS_SORTHL });
@@ -59,9 +61,9 @@ const Product = () => {
         <Sort handleHL={handleHL} handleLH={handleLH} />
         <GenderFilter
           handleRemove={handleRemove}
-          handleMale={handleMen}
-          handleKids={handleKids}
-          handleFemale={handleWomen}
+          handleMen={handleMen}
+          handleKid={handleKids}
+          handleWomen={handleWomen}
         />
 
       </HStack>
