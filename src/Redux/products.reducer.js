@@ -26,31 +26,31 @@ const iState = {
         case Types.GET_PRODUCTS_SORTHL:
             return {
                 ...oldstate,
-                dogData: sortHLfun(oldstate.productsDataCopy),
+                productsData: sortHLfun(oldstate.productsDataCopy),
             };
 
         case Types.GET_PRODUCTS_SORTLH:
             return {
                 ...oldstate,
-                dogData: sortLHfun(oldstate.productsDataCopy),
+                productsData: sortLHfun(oldstate.productsDataCopy),
             };
 
         case Types.GET_PRODUCTS_FILTER_MEN:
             return {
                 ...oldstate,
-                dogData: filterFuncMen(oldstate.productsDataCopy),
+                productsData: filterFuncMen(oldstate.productsDataCopy),
             };
 
         case Types.GET_PRODUCTS_FILTER_WOMEN:
             return {
                 ...oldstate,
-                dogData: filterFuncWomen(oldstate.productsDataCopy),
+                productsData: filterFuncWomen(oldstate.productsDataCopy),
             };
 
         case Types.GET_REMOVE_FILTER:
             return {
                 ...oldstate,
-                dogData: oldstate.productsDataCopy,
+                productsData: oldstate.productsDataCopy,
             };
 
         default:

@@ -9,3 +9,7 @@ export const getProductData = (payload) => (dispatch) => {
     .catch((e) => dispatch({ type: Types.GET_PRODUCTS_ERROR }));
 };
 
+
+
+  
+  
