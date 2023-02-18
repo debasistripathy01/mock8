@@ -1,9 +1,9 @@
 import { Grid, HStack } from "@chakra-ui/react";
 import React from "react";
-import axios from "axios"
+// import axios from "axios"
 import { useEffect } from "react";
 import * as Types from "../Redux/products.actionTypes"
-import { useState } from "react";
+// import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Components/Loader";
 import Navbar from "../Components/Navbar";
@@ -17,7 +17,7 @@ const Product = () => {
 
     const {productsData, productsLoading} = useSelector((store)=>store.proReducer)
     const dispatch = useDispatch();
-    const [name, setName] = useState("");
+    // const [name, setName] = useState("");
 
     useEffect(() => {
         dispatch(getProductData());
@@ -38,6 +38,9 @@ const Product = () => {
       const handleMen = () => {
         dispatch({ type: Types.GET_PRODUCTS_FILTER_MEN });
       };
+      const handleKids = () => {
+        dispatch({ type: Types.GET_PRODUCTS_FILTER_KIDS });
+      };
     
       const handleRemove = () => {
         dispatch({ type: Types.GET_REMOVE_FILTER });
@@ -57,6 +60,7 @@ const Product = () => {
         <GenderFilter
           handleRemove={handleRemove}
           handleMale={handleMen}
+          handleKids={handleKids}
           handleFemale={handleWomen}
         />
 

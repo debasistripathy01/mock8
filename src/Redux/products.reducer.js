@@ -47,6 +47,12 @@ const iState = {
                 productsData: filterFuncWomen(oldstate.productsDataCopy),
             };
 
+        case Types.GET_PRODUCTS_FILTER_KIDS:
+            return {
+                ...oldstate,
+                productsData: filterFuncKids(oldstate.productsDataCopy),
+            };
+
         case Types.GET_REMOVE_FILTER:
             return {
                 ...oldstate,
@@ -62,14 +68,20 @@ const iState = {
 
   const filterFuncMen = (arr)=>{
     const validate = arr.filter((el) => {
-        return el.category == "men";
+        return el.category === "men";
       });
       return validate.length;
   }
 
   const filterFuncWomen = (arr)=>{
     const validate = arr.filter((el) => {
-        return el.category == "women";
+        return el.category === "women";
+      });
+      return validate.length;
+  }
+  const filterFuncKids = (arr)=>{
+    const validate = arr.filter((el) => {
+        return el.category === "kids";
       });
       return validate.length;
   }
