@@ -25,7 +25,7 @@ const Navbar = () => {
       onClick={() => navigate("/")}
       cursor="pointer"
     />
-    <Link to="/product/:id">Products Page</Link>
+    <Link to="/product">Products Page</Link>
     <Link to="/cart">Cart</Link>
     <Link to="/orders">Orders Page</Link>
   </Flex>

@@ -10,7 +10,8 @@ const iState = {
   };
 
 
-  export const proReducer = (oldstate=iState, {type,payload})=>{
+  export const proReducer = (oldstate=iState, action)=>{
+    const {type,payload} = action;
     switch(type){
         case Types.GET_PRODUCTS_LOADING:
             return {...oldstate, productsLoading: true}
